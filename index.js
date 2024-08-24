@@ -133,6 +133,8 @@ app.put('/api/persons/:name', (request, response, next) => {
     number: body.number
   }
 
+  console.log(person)
+
   Phone.findOne({name: name})
     .then(phone => {
       Phone.findByIdAndUpdate(phone.id,person,{new: true})
