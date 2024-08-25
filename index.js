@@ -25,7 +25,6 @@ const unknownEndpoint = (request, response) => {
   response.status(404).send({ error: 'unknown endpoint' })
 }
 
-
 let persons = [
   { 
       "id": 1,
@@ -100,7 +99,7 @@ app.get('/info', (request , response) =>{
         <h3>${formattedDate}</h3>`
     )
 })
-app.delete('/api/persons/:id', (request, response) =>{
+app.delete('/api/persons/:id', (request, response, next) =>{
     Phone.findByIdAndDelete(request.params.id)
     .then(result => {
       response.status(204).end()
